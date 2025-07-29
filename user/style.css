@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Libertinus Mono', monospace;
+    font-size: 16px;
+    margin: 0;
+    background-color: #f5f6f9;
+}
+
+header {
+    background-color: #ffffff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+/* เมนูซ้าย */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* ช่องว่าง*/
+    padding: 0;
+    margin-left: auto; 
+}
+nav ul li{
+    cursor: pointer;
+}
+nav ul li:hover{
+    color: #c9302c;
+}
+/* ปุ่ม logout ขวา */
+.logout-btn {
+    text-decoration: none;
+    color: white;
+    background-color: #d9534f;
+    padding: 6px 12px;
+    border-radius: 5px; /* ความโค้งของปุ่ม*/
+    transition: background-color 0.3s;
+    margin-left: auto;
+}
+
+.logout-btn:hover {
+    background-color: #c9302c;
+}
+
+@media all and (min-width: 700px) {
+    header {
+        padding: 5px 30px;
+    }
+}
+.inputSearch {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 400px;
+  border-radius: 40px;
+  overflow: hidden;
+  margin-left: 50px; /* ขยับไปขวา*/
+}
+.inputSearch input {
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px ;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.inputSearch span {
+    width: 20%; 
+    height: 100%;
+    background-color: #4361ee; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}

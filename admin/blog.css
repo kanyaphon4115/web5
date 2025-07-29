@@ -1,0 +1,75 @@
+
+ 
+/* Dark mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ddd;
+}
+
+body.dark-mode .blog-header {
+  border-bottom-color: #444;
+  color: #eee;
+}
+
+body.dark-mode .blog-header-logo {
+  color: #eee;
+}
+
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+  color: #eee;
+}
+
+body.dark-mode .nav-scroller {
+  background-color: #222;
+}
+
+body.dark-mode .nav-scroller .nav-link {
+  color: #bbb;
+}
+
+body.dark-mode .blog-post-meta {
+  color: #999;
+}
+
+body.dark-mode .blog-footer {
+  background-color: #222;
+  color: #aaa;
+  border-top-color: #444;
+}
+
+body.dark-mode .blog-pagination > .btn {
+  background-color: #333;
+  color: #eee;
+  border-color: #555;
+}
+/* ปุ่ม Logout กับ สลับโหมด เมื่ออยู่ใน dark-mode */
+body.dark-mode #toggle-theme-btn,
+body.dark-mode a.btn-outline-secondary.ms-2 {
+  background-color: white !important;
+  color: red !important;
+  border-color: white !important;
+}
+
+/* เพื่อให้ปุ่มดูเหมาะสมกับโหมดมืด */
+body.dark-mode #toggle-theme-btn:hover,
+body.dark-mode a.btn-outline-secondary.ms-2:hover {
+  background-color: #f8f9fa !important; /* สีอ่อนเวลาผู้ใช้ hover */
+  color: darkred !important;
+}
+/* เริ่มต้น: light mode = สีดำ */
+.nav-scroller .nav .link-secondary {
+  color: black;
+}
+
+/* dark mode = สีขาว */
+body.dark-mode .nav-scroller .nav .link-secondary {
+  color: white;
+}
+
+
+
