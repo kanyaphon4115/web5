@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST")
                 $_SESSION['email'] = $user_data['email'];
                 $_SESSION['username'] = $user_data['username'];
 
-                header("Location: http://localhost/web5/admin/homepage_news.php");
+                header("Location: /web5/admin/homepage_news.php");
                 exit();
             }
             else {
