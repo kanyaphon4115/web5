@@ -127,10 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
             Reset Password
           </button>
-          <p class="text-center text-sm text-slate-900">
-          Try again
-          <a href="login_user.php" class="text-green-600 hover:underline font-semibold ml-1">login here</a>
-        </p>
+         <p class="text-center text-sm">
+          <span class="text-white">Try again</span>
+  <a href="login_user.php" class="text-green-600 hover:underline font-semibold ml-1">login here</a>
+</p>
+
       </form>
   </div>
 </section>
