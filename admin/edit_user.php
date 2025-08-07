@@ -11,8 +11,7 @@ if (!isset($_SESSION["email"])) {
 include("../include/header.php");
 
 // เชื่อมต่อฐานข้อมูล
-$conn = mysqli_connect("localhost", "root", "", "register") or die("เชื่อมต่อฐานข้อมูลล้มเหลว: " . mysqli_connect_error());
-
+include("../user/db.php"); 
 // ตรวจสอบว่ามี id ที่จะทำการแก้ไข
 if (isset($_GET['edit'])) {
     $id = intval($_GET['edit']);
