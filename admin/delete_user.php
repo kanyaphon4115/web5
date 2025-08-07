@@ -9,8 +9,7 @@ if (!isset($_SESSION["email"])) {
 }
 
 // เชื่อมต่อฐานข้อมูล
-$conn = mysqli_connect("localhost", "root", "", "register") or die("เชื่อมต่อฐานข้อมูลล้มเหลว: " . mysqli_connect_error());
-
+include("../user/db.php"); 
 // ตรวจสอบว่ามี id ที่จะลบ
 if (isset($_GET['del'])) {
     $id = intval($_GET['del']);
