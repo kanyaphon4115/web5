@@ -63,7 +63,7 @@ include("../db2/connection.php");
               </div>
             </form>
             <button id="toggle-theme-btn" class="btn btn-outline-secondary btn-sm me-2">mode</button>
-            <a class="btn btn-sm btn-outline-secondary ms-2" href="/web5/user/signup.php">Sign up</a>
+            <a class="btn btn-sm btn-outline-secondary ms-2" href="signup.php">Sign up</a>
           </div>
         </div>
       </header>
