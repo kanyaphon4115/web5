@@ -15,29 +15,33 @@ $message = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $oldPassword = $_POST['old_password'];
     $newPassword = $_POST['new_password'];
+    $confirmPassword = $_POST['confirm_password'];
 
-    // เชื่อมต่อฐานข้อมูล
-    include("../user/db.php"); // สมมุติว่าที่นี่มี $con = ...
+    include("../user/db.php");
 
-    $sql = "SELECT pass FROM form WHERE email = '$email'";
-    $result = mysqli_query($con, $sql);
-    if (!$result) {
-        die("Query error: " . mysqli_error($con));
-    }
-
-    $row = mysqli_fetch_assoc($result);
-if ($row) {
-    if ($oldPassword === $row['pass']) {
-        $updateSql = "UPDATE form SET pass='$newPassword' WHERE email='$email'";
-        if (mysqli_query($con, $updateSql)) {
-            $message = "Password successfully changed";
-        } else {
-            $message = "Error change ";
-        }
+    if ($newPassword !== $confirmPassword) {
+        $message = "New password and confirm password do not match";
     } else {
-        $message = "Old password is incorrect";
+        $sql = "SELECT pass FROM form WHERE email = '$email'";
+        $result = mysqli_query($con, $sql);
+        if (!$result) {
+            die("Query error: " . mysqli_error($con));
+        }
+
+        $row = mysqli_fetch_assoc($result);
+        if ($row) {
+            if ($oldPassword === $row['pass']) {
+                $updateSql = "UPDATE form SET pass='$newPassword' WHERE email='$email'";
+                if (mysqli_query($con, $updateSql)) {
+                    $message = "Password successfully changed";
+                } else {
+                    $message = "Error change ";
+                }
+            } else {
+                $message = "Old password is incorrect";
+            }
+        }
     }
-}
 }
 ?>
 
@@ -61,14 +65,17 @@ if ($row) {
             <h3 class="text-md font-bold mt-4 mb-2">Change Password</h3>
 
             <div class="flex gap-4">
-                <div class="w-1/2">
+                <div class="w-1/3">
                     <label class="block mb-1 text-sm">Old password</label>
                     <input type="password" name="old_password" required class="w-full border px-3 py-2 rounded">
                 </div>
-
-                <div class="w-1/2">
+                <div class="w-1/3">
                     <label class="block mb-1 text-sm">New password</label>
                     <input type="password" name="new_password" required class="w-full border px-3 py-2 rounded">
+                </div>
+                <div class="w-1/3">
+                    <label class="block mb-1 text-sm">Confirm password</label>
+                    <input type="password" name="confirm_password" required class="w-full border px-3 py-2 rounded">
                 </div>
             </div>
 
