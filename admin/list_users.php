@@ -21,7 +21,7 @@ include("../include/header.php");
     <tr>
       <th>ID</th>
       <th>Email</th>
-      <th>Password</th>
+      <!-- <th>Password</th> ลบหัวตาราง Password ออก -->
       <th>Gender</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -29,7 +29,7 @@ include("../include/header.php");
 
     <?php
       // เชื่อมต่อฐานข้อมูล register
-include("../user/db.php"); 
+      $conn = mysqli_connect("localhost", "root", "", "register") or die("Database connection failed" . mysqli_connect_error());
 
       // ดึงข้อมูลจากตาราง user
       $query = mysqli_query($conn, "SELECT * FROM form");
@@ -43,7 +43,7 @@ include("../user/db.php");
     <tr>
       <td><?php echo $row["id"]; ?></td>
       <td><?php echo htmlspecialchars($row["email"]); ?></td>
-      <td><?php echo htmlspecialchars($row["pass"]); ?></td>
+      <!-- <td><?php echo htmlspecialchars($row["pass"]); ?></td> ลบการโชว์รหัสผ่านออก -->
       <td><?php echo htmlspecialchars($row["gender"]); ?></td>
       <td>
         <a href="edit_user.php?edit=<?php echo $row['id']; ?>" class="btn btn-outline-primary btn-sm">
