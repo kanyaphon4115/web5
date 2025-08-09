@@ -33,7 +33,6 @@ include("../db2/connection.php");
     </script>
   </head>
   <body>
-    <script src="theme-toggle.js"></script>
     <div class="container">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
@@ -62,8 +61,20 @@ include("../db2/connection.php");
                 </button>
               </div>
             </form>
-            <button id="toggle-theme-btn" class="btn btn-outline-secondary btn-sm me-2">mode</button>
-            <a class="btn btn-sm btn-outline-secondary ms-2" href="../user/signup.php">Sign up</a>
+
+            <!-- ปุ่มโหมด (Toggle Theme) -->
+            <button id="toggle-theme-btn"
+              class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center me-2"
+              style="width: 38px; height: 38px;"
+              aria-label="Toggle theme"
+            >
+              <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 24 24">
+                <!-- เริ่มต้นเป็น sun -->
+                <path id="theme-icon-path" d="M12 4.5V2m0 20v-2.5m7.07-7.07H22m-20 0h2.93m12.02 5.66l1.77 1.77m-15.56 0l1.77-1.77m12.02-12.02l1.77-1.77m-15.56 0l1.77 1.77M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+              </svg>
+            </button>
+
+            <a class="btn btn-sm btn-outline-secondary ms-2" href="/web5/user/signup.php">Sign up</a>
           </div>
         </div>
       </header>
@@ -169,5 +180,36 @@ include("../db2/connection.php");
     <footer class="blog-footer text-center py-3">
       <p><a href="#">Back to top</a></p>
     </footer>
+
+    <script>
+      // โหลดสถานะธีมตอนเปิดหน้าเว็บ
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('toggle-theme-btn');
+        const iconPath = document.getElementById('theme-icon-path');
+        let dark = localStorage.getItem('theme') === 'dark';
+
+        function updateTheme() {
+          document.body.classList.toggle('bg-dark', dark);
+          document.body.classList.toggle('text-white', dark);
+          if (dark) {
+            iconPath.setAttribute('d', 'M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z');
+            iconPath.setAttribute('fill', 'currentColor');
+            iconPath.setAttribute('stroke', 'none');
+          } else {
+            iconPath.setAttribute('d', 'M12 4.5V2m0 20v-2.5m7.07-7.07H22m-20 0h2.93m12.02 5.66l1.77 1.77m-15.56 0l1.77-1.77m12.02-12.02l1.77-1.77m-15.56 0l1.77 1.77M12 7a5 5 0 100 10 5 5 0 000-10z');
+            iconPath.setAttribute('fill', 'none');
+            iconPath.setAttribute('stroke', 'currentColor');
+          }
+        }
+
+        updateTheme();
+
+        btn.addEventListener('click', () => {
+          dark = !dark;
+          localStorage.setItem('theme', dark ? 'dark' : 'light');
+          updateTheme();
+        });
+      });
+    </script>
   </body>
 </html>
