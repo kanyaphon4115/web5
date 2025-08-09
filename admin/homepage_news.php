@@ -56,7 +56,18 @@ include("../db2/connection.php");
                 </button>
               </div>
             </form>
-             <button id="toggle-theme-btn" class="btn btn-outline-secondary btn-sm me-2">mode</button>
+            
+
+<!-- แทนที่ปุ่ม mode เดิม -->
+<button id="toggle-theme-btn" type="button"
+  class="btn btn-outline-secondary btn-sm rounded-circle d-flex align-items-center justify-content-center me-2"
+  style="width: 38px; height: 38px;"
+  aria-label="Toggle theme"
+>
+  <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+    <path id="theme-icon-path" d="M12 3v1m0 16v1m8.66-8.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.24 7.07l-.71-.71M6.34 6.34l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
 
 <div class="dropdown ms-2">
   <button class="btn btn-outline-primary btn-sm dropdown-toggle d-flex align-items-center"
@@ -185,4 +196,29 @@ include("../db2/connection.php");
       <p><a href="#">Back to top</a></p>
     </footer>
     
+<script>
+const btn = document.getElementById('toggle-theme-btn');
+const iconPath = document.getElementById('theme-icon-path');
+let dark = false;
+
+btn.addEventListener('click', () => {
+  dark = !dark;
+  document.body.classList.toggle('bg-dark', dark);
+  document.body.classList.toggle('text-white', dark);
+
+  // เปลี่ยนไอคอน sun/moon
+  if (dark) {
+    // Moon
+    iconPath.setAttribute('d', 'M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z');
+    iconPath.setAttribute('fill', 'currentColor');
+    iconPath.setAttribute('stroke', 'none');
+  } else {
+    // Sun
+    iconPath.setAttribute('d', 'M12 3v1m0 16v1m8.66-8.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.24 7.07l-.71-.71M6.34 6.34l-.71-.71M12 5a7 7 0 100 14 7 7 0 000-14z');
+    iconPath.setAttribute('fill', 'none');
+    iconPath.setAttribute('stroke', 'currentColor');
+  }
+});
+</script>
+</body>
 </html>
