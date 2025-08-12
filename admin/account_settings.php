@@ -1,8 +1,6 @@
 <?php
-// เริ่ม session และเชื่อมต่อฐานข้อมูลตามต้องการ
 session_start();
 
-// ตรวจสอบว่าผู้ใช้ล็อกอินแล้วหรือไม่
 if (!isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
@@ -11,7 +9,6 @@ if (!isset($_SESSION['email'])) {
 $email = $_SESSION['email'];
 $message = "";
 
-// ตรวจสอบการส่งฟอร์ม
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $oldPassword = $_POST['old_password'];
     $newPassword = $_POST['new_password'];
@@ -44,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,31 +60,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <h3 class="text-md font-bold mt-4 mb-2">Change Password</h3>
 
-            <div class="flex gap-4">
-                <div class="w-1/3">
-                    <label class="block mb-1 text-sm">Old password</label>
-                    <input type="password" name="old_password" required class="w-full border px-3 py-2 rounded">
-                </div>
-                <div class="w-1/3">
-                    <label class="block mb-1 text-sm">New password</label>
-                    <input type="password" name="new_password" required class="w-full border px-3 py-2 rounded">
-                </div>
-                <div class="w-1/3">
-                    <label class="block mb-1 text-sm">Confirm password</label>
-                    <input type="password" name="confirm_password" required class="w-full border px-3 py-2 rounded">
-                </div>
+            <div class="mb-3">
+                <label class="block mb-1 text-sm">Old password</label>
+                <input type="password" name="old_password" id="old_password" required class="w-full border px-3 py-2 rounded">
             </div>
 
-            <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+            <div class="mb-3">
+                <label class="block mb-1 text-sm">New password</label>
+                <input type="password" name="new_password" id="new_password" required class="w-full border px-3 py-2 rounded">
+            </div>
+
+            <div class="mb-3">
+                <label class="block mb-1 text-sm">Confirm password</label>
+                <input type="password" name="confirm_password" id="confirm_password" required class="w-full border px-3 py-2 rounded">
+            </div>
+
+            <!-- Checkbox toggle -->
+            <div class="mb-4">
+                <label class="inline-flex items-center">
+                    <input type="checkbox" onclick="togglePasswords()" class="mr-2">
+                    Show Passwords
+                </label>
+            </div>
+
+            <button type="submit" class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
                 Save Changes
             </button>
             <a href="homepage_news.php" class="mt-4 block text-center w-full bg-gray-400 text-white py-2 rounded hover:bg-gray-500">
-            Back Home
+                Back Home
             </a>
             <?php if ($message): ?>
                 <p class="mt-4 text-center text-red-500 font-semibold"><?php echo htmlspecialchars($message); ?></p>
             <?php endif; ?>
         </form>
     </div>
+
+    <script>
+        function togglePasswords() {
+            const ids = ['old_password', 'new_password', 'confirm_password'];
+            ids.forEach(id => {
+                const input = document.getElementById(id);
+                input.type = (input.type === "password") ? "text" : "password";
+            });
+        }
+    </script>
 </body>
 </html>
