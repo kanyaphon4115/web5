@@ -29,7 +29,9 @@ include("../include/header.php");
 
     <?php
       // เชื่อมต่อฐานข้อมูล register
-      $conn = mysqli_connect("localhost", "root", "", "register") or die("Database connection failed" . mysqli_connect_error());
+      <?php
+        include("../user/db.php");
+        ?
 
       // ดึงข้อมูลจากตาราง user
       $query = mysqli_query($conn, "SELECT * FROM form");
