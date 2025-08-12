@@ -99,7 +99,7 @@ $otherResult = mysqli_query($conn, $sqlOther);
     </li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="contact.php">Contact us</a></li>
-    <li><a class="dropdown-item" href="#">Settings</a></li>
+    <li><a class="dropdown-item" href="account_settings.php">Settings</a></li>
     <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item text-danger" href="index.php">Logout</a></li>
   </ul>
