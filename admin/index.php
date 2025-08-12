@@ -74,7 +74,7 @@ include("../db2/connection.php");
               </svg>
             </button>
 
-            <a class="btn btn-sm btn-outline-secondary ms-2" href="/web5/user/signup.php">Sign up</a>
+            <a class="btn btn-sm btn-outline-secondary ms-2" href="../user/signup">Sign up</a>
           </div>
         </div>
       </header>
