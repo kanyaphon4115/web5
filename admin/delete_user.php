@@ -26,7 +26,7 @@ if (isset($_GET['del'])) {
     }
 } else {
     // ถ้าไม่มี id ส่งมา
-    header("location: list_user.php");
+    header("location: list_users.php");
     exit();
 }
 ?>
